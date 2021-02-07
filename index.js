@@ -4,18 +4,17 @@ const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose')
 const Person = require('./models/person')
 const User = require('./models/user')
+const { connectionString } = require('./constants');
 
 mongoose.set('useFindAndModify', false)
-
-const MONGODB_URI = 'mongodb+srv://fullstack:halfstack@cluster0-ostce.mongodb.net/gql-phonebook?retryWrites=true'
 
 const JWT_SECRET = 'NEED_HERE_A_SECRET_KEY'
 
 mongoose.set('useCreateIndex', true)
 
-console.log('connecting to', MONGODB_URI)
+console.log('connecting to', 'mongodb')
 
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('connected to MongoDB')
   })
